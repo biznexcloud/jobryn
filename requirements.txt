@@ -9,3 +9,5 @@ Pillow
 django-phonenumber-field[phonenumbers]
 django-cors-headers
 requests
+gunicorn
+uvicorn
