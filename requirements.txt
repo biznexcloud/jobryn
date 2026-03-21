@@ -13,3 +13,4 @@ gunicorn
 uvicorn
 mysqlclient
 PyMySQL
+drf-spectacular
