@@ -71,3 +71,4 @@ Visit the Admin at `http://127.0.0.1:8000/admin/`.
 ---
 *Built for production scale with Django 6.x and Django REST Framework.*
 # jobryn
+# jobryn
