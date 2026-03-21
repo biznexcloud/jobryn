@@ -11,3 +11,5 @@ django-cors-headers
 requests
 gunicorn
 uvicorn
+mysqlclient
+PyMySQL
