@@ -30,7 +30,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-r$c(x(yh^ga))!$%71$c&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "jobryn.com",
+    "www.jobryn.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # Application definition
@@ -221,6 +226,12 @@ KHALTI_SECRET_KEY = 'test_secret_key_placeholder' # REPLACE IN PRODUCTION
 
 # CORS
 CORS_ALLOW_ALL_ORIGINS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://jobryn.com",
+    "https://www.jobryn.com",
+]
+
 UNFOLD = {
     "SITE_TITLE": "Jobryn Admin",
     "SITE_HEADER": "Jobryn Management Portal",
