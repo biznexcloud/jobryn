@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
     "www.jobryn.com",
     "localhost",
     "127.0.0.1",
+    "backend.jobryn.com"
 ]
 
 
@@ -230,6 +231,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 CSRF_TRUSTED_ORIGINS = [
     "https://jobryn.com",
     "https://www.jobryn.com",
+    "https://backend.jobryn.com",
+    "https://www.backend.jobryn.com"
 ]
 
 UNFOLD = {
