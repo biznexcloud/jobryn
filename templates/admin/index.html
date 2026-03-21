@@ -1,0 +1,42 @@
+{% extends 'admin/index.html' %}
+{% load i18n unfold %}
+
+{% block content %}
+    <div class="px-4 py-6">
+        <h2 class="font-bold text-3xl text-gray-900 dark:text-gray-100 mb-6">{% trans "Platform Analytics" %}</h2>
+        
+        {# KPI Stats Grid - Reduced columns to prevent squashing #}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+            {% for stat in kpi_stats %}
+                {% component "unfold/components/card.html" with title=stat.title footer=stat.footer %}
+                    <div class="text-4xl font-extrabold text-blue-600 dark:text-blue-400 my-2">
+                        {{ stat.metric }}
+                    </div>
+                {% endcomponent %}
+            {% endfor %}
+        </div>
+
+        {# Charts Grid #}
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-10">
+                {# Hiring Chart #}
+                {% component "unfold/components/card.html" with title=_("Hiring Pipeline (Last 6 Months)") %}
+                    {% include "unfold/components/chart/line.html" with data=hiring_chart|safe height=300 %}
+                {% endcomponent %}
+
+                {# Revenue Chart #}
+                {% component "unfold/components/card.html" with title=_("Revenue & Payroll (NPR)") %}
+                    {% include "unfold/components/chart/bar.html" with data=revenue_chart|safe height=300 %}
+                {% endcomponent %}
+
+                {# Engagement #}
+                {% component "unfold/components/card.html" with title=_("Social Engagement") %}
+                    {% include "unfold/components/chart/line.html" with data=engagement_chart|safe height=300 %}
+                {% endcomponent %}
+
+                {# Talent #}
+                {% component "unfold/components/card.html" with title=_("Top Talent Skills") %}
+                    {% include "unfold/components/chart/bar.html" with data=talent_chart|safe height=300 %}
+                {% endcomponent %}
+            </div>
+    </div>
+{% endblock %}

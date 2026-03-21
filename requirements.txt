@@ -1,0 +1,11 @@
+Django>=5.0
+djangorestframework
+djangorestframework-simplejwt
+django-filter
+django-unfold
+channels
+daphne
+Pillow
+django-phonenumber-field[phonenumbers]
+django-cors-headers
+requests
