@@ -8,7 +8,7 @@ from jobrynbackend.permissions import IsEmailVerified
 from drf_spectacular.utils import extend_schema
 from .serializers import (
     RegisterSerializer, LoginSerializer, UserSerializer,
-    VerifyOTPSerializer, ForgotPasswordSerializer, ResetPasswordSerializer
+    VerifyOTPSerializer, ForgotPasswordSerializer, ResetPasswordSerializer, ResendOTPSerializer
 )
 
 
@@ -85,6 +85,48 @@ class VerifyOTPView(APIView):
 
         return Response({"msg": "Email verified successfully!"}, status=200)
 
+class ResendOTPView(APIView):
+    serializer_class = ResendOTPSerializer
+    def post(self, request):
+        email = request.data.get('email')
+
+        if not email:
+            return Response({"msg": "Email is required"}, status=400)
+
+        from .models import User
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            return Response({"msg": "User not found"}, status=404)
+
+        if user.is_email_verified:
+            return Response({"msg": "Email is already verified"}, status=400)
+
+        import random
+        from django.utils import timezone
+        from datetime import timedelta
+        from django.core.mail import send_mail
+
+        otp = str(random.randint(100000, 999999))
+        expiry = timezone.now() + timedelta(minutes=10)
+
+        user.otp = otp
+        user.otp_expiry = expiry
+        user.save()
+
+        # Send Email
+        subject = "Your OTP for Email Verification"
+        message = f"Hi {user.name or 'User'},\n\nYour OTP for email verification is: {otp}\nThis OTP is valid for 10 minutes.\n\nBest regards,\nThe Jobryn Team"
+        from django.conf import settings
+        send_mail(
+            subject,
+            message,
+            settings.DEFAULT_FROM_EMAIL,
+            [user.email],
+            fail_silently=False,
+        )
+
+        return Response({"msg": "OTP resent to your email"}, status=200)
 
 class ProfileView(APIView):
     permission_classes = [IsAuthenticated, IsEmailVerified]
