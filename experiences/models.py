@@ -10,6 +10,10 @@ class Experience(models.Model):
     end_date = models.DateField(null=True, blank=True)
     is_current = models.BooleanField(default=False)
     description = models.TextField(blank=True)
+    responsibilities = models.TextField(blank=True)
+    achievements = models.TextField(blank=True)
+    skills_used = models.TextField(blank=True)
+    is_public = models.BooleanField(default=True)  # Whether to show this experience on the public profile
 
     # 👔 PROFESSIONAL DETAILS
     EMPLOYMENT_TYPES = (

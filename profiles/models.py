@@ -12,6 +12,8 @@ class Profile(models.Model):
     headline = models.CharField(max_length=220, blank=True)
     about = models.TextField(blank=True)
     pronouns = models.CharField(max_length=50, blank=True)
+    user_strength = models.CharField(max_length=255, blank=True)  # e.g. "Creative Problem Solver"
+    user_weakness = models.CharField(max_length=255, blank=True)  # e.g. "Perfectionist"
     
     # 📍 LOCATION
     city = models.CharField(max_length=255, null=True, blank=True)
@@ -36,6 +38,8 @@ class Profile(models.Model):
     featured_items = models.JSONField(default=list, blank=True)
     languages = models.JSONField(default=list, blank=True)
     interests = models.JSONField(default=list, blank=True)
+    view_count = models.PositiveIntegerField(default=0)
+    
     
     # 🕵️ VISIBILITY & AVAILABILITY
     VISIBILITY_CHOICES = (

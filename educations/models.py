@@ -9,6 +9,9 @@ class Education(models.Model):
     start_date = models.DateField()
     end_date = models.DateField(null=True, blank=True)
     grade = models.CharField(max_length=50, blank=True)
+    city = models.CharField(max_length=255, blank=True)
+    certificate = models.FileField(upload_to='education_certificates/', null=True, blank=True)
+    is_public = models.BooleanField(default=True)  # Whether to show this education on the public profile
     
     # 🎓 ACADEMIC DETAILS
     activities_societies = models.TextField(blank=True)

@@ -18,11 +18,15 @@ class Invoice(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='unpaid')
     due_date = models.DateField(null=True, blank=True)
     paid_at = models.DateTimeField(null=True, blank=True)
+    payment_reference = models.CharField(max_length=255, blank=True)
+    invoice_pdf = models.FileField(upload_to='invoices/', null=True, blank=True)
+    notes = models.TextField(blank=True)
 
     # 📝 BILLING DETAILS
     tax_id = models.CharField(max_length=50, blank=True)
     billing_address = models.TextField(blank=True)
     invoice_notes = models.TextField(blank=True)
+    invoice_no = models.CharField(max_length=100, unique=True, blank=True)  # Auto-generated invoice number
 
     # 💳 KHALTI SPECIFIC
     khalti_pidx = models.CharField(max_length=255, null=True, blank=True)
