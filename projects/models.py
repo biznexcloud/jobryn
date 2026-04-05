@@ -8,6 +8,8 @@ class Project(models.Model):
     url = models.URLField(blank=True)
     role = models.CharField(max_length=100, blank=True)
     technologies = models.JSONField(default=list, blank=True)
+    status = models.CharField(max_length=50, blank=True)
+    tasks = models.JSONField(default=list, blank=True)
     
     # 🏗️ REPOSITORY & TEAM
     repository_url = models.URLField(blank=True)

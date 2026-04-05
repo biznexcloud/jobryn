@@ -34,6 +34,8 @@ class Meeting(models.Model):
     notes = models.TextField(blank=True)
     feedback = models.TextField(blank=True)
     candidate_no_show = models.BooleanField(default=False)
+    rating = models.PositiveIntegerField(null=True, blank=True)  # 1-5 rating scale
+    meeting_documents = models.FileField(upload_to='meeting_documents/', null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

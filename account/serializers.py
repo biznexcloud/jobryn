@@ -32,7 +32,6 @@ class ResendOTPSerializer(serializers.Serializer):
     email = serializers.EmailField()
     
 
-
 class ForgotPasswordSerializer(serializers.Serializer):
     email = serializers.EmailField()
 

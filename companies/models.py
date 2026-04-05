@@ -24,6 +24,10 @@ class Company(models.Model):
     phone = models.CharField(max_length=20, blank=True)
     description = models.TextField(blank=True)
     tagline = models.CharField(max_length=255, blank=True)
+    mission = models.TextField(blank=True)
+    vision = models.TextField(blank=True)
+    rating = models.DecimalField(max_digits=3, decimal_places=2, null=True, blank=True)
+
     location = models.CharField(max_length=255, blank=True)
     industry = models.CharField(max_length=100, blank=True)
     company_size = models.CharField(max_length=20, choices=COMPANY_SIZE_CHOICES, blank=True)
