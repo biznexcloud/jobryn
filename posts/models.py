@@ -14,6 +14,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_deleted = models.BooleanField(default=False)
+    is_saved = models.BooleanField(default=False)  # For "Save Post" feature
 
     def __str__(self):
         return f"Post by {self.author.email} at {self.created_at}"

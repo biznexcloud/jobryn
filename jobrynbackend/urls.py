@@ -33,6 +33,7 @@ urlpatterns = [
     path('api/v1/meetings/', include('meetings.urls')),
     path('api/v1/billing/', include('billing.urls')),
     path('api/v1/learning/', include('learning.urls')),
+    path('api/v1/posts/', include('posts.urls')),
     
     # Swagger
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
