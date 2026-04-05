@@ -96,4 +96,6 @@ yarn-error.log*
 # Optional (Be careful)
 # =========================
 # Uncomment ONLY if you know what you're doing
-migrations/
+# Ignore all but keep init (still risky)
+migrations/*
+!*/migrations/__init__.py
