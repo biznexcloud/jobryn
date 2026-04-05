@@ -123,29 +123,26 @@ ASGI_APPLICATION = 'jobrynbackend.asgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'jobryn',
-#         'USER': 'biznexcloud.com@gmail.com',
-#         'PASSWORD': 'Ramesh@5611',
-#         'HOST': '204.10.163.10',
-#         'PORT': '3307',
-#         'OPTIONS': {
-#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-#         }
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'jobryn',
+        'USER': 'biznexcloud.com@gmail.com',
+        'PASSWORD': 'Ramesh@5611',
+        'HOST': '204.10.163.10',
+        'PORT': '3308',  # ✅ fixed (match your URL)
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        }
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
