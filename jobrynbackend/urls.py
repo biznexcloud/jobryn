@@ -39,6 +39,7 @@ urlpatterns = [
     path('api/v1/connections/', include('connections.urls')),
     path('api/v1/messages/', include('messages.urls')),
     path('api/v1/notifications/', include('notifications.urls')),
+    path('api/v1/newsletters/', include('newsletters.urls')),
     
     
     # Swagger
