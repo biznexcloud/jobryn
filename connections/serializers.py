@@ -1,8 +1,7 @@
 from rest_framework import serializers
-from django.contrib.auth import get_user_model
+from account.models import User
 from .models import Connection
 
-User = get_user_model()
 
 
 class ConnectionSerializer(serializers.ModelSerializer):

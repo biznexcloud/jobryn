@@ -18,7 +18,7 @@ class Stori(models.Model):
     )
 
     caption = models.TextField(blank=True)
-    images = models.ImageField(upload_to='story_images/')
+    
 
     visibility = models.CharField(
         max_length=20,
@@ -41,6 +41,31 @@ class Stori(models.Model):
 
     def __str__(self):
         return f"Story by {self.author.email}"
+    
+class StoriMedia(models.Model):
+    story = models.ForeignKey(
+        Stori,
+        on_delete=models.CASCADE,
+        related_name='media'
+    )
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+    image= models.ImageField(upload_to='story_media/', null=True, blank=True)
+
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.media_type} for Story {self.story.id}"
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['story']),
+        ]
+        unique_together = ('story', 'author')
+        
    
 class StoriView(models.Model):
     story = models.ForeignKey(
