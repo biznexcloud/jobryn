@@ -86,6 +86,7 @@ INSTALLED_APPS = [
     'billing',
     'meetings',
     'stories',
+    
 ]
 
 MIDDLEWARE = [
