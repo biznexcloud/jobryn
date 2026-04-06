@@ -13,6 +13,7 @@ from billing.models import Invoice, PayrollRecord, Payment
 
 # Social & Engagement
 from posts.models import Post, Comment, Like
+from stories.models import Stori, StoriLike, StoriView, StoriComment
 from follows.models import Follow
 from connections.models import Connection
 from messages.models import Message
@@ -195,6 +196,42 @@ def get_social_engagement_data(request):
         }]
     }
 
+def get_top_posts(request):
+    """Top 5 posts by likes."""
+    top_posts = (
+        Post.objects
+        .annotate(likes_count=Count('likes'))
+        .order_by('-likes_count')[:5]
+    )
+    return [
+        {
+            "id": post.id,
+            "author": post.author.email,
+            "content": post.content[:100] + ("..." if len(post.content) > 100 else ""),
+            "likes": post.likes_count,
+            "created_at": post.created_at.strftime("%Y-%m-%d"),
+        }
+        for post in top_posts
+    ]
+
+def get_top_stories(request):
+    """Top 5 stories by likes."""
+    top_stories = (
+        Stori.objects
+        .annotate(likes_count=Count('likes'))
+        .order_by('-likes_count')[:5]
+    )
+    return [
+        {
+            "id": story.id,
+            "author": story.author.email,
+            "caption": story.caption[:100] + ("..." if len(story.caption) > 100 else ""),
+            "likes": story.likes_count,
+            "views": story.views_count,
+            "created_at": story.created_at.strftime("%Y-%m-%d"),
+        }
+        for story in top_stories
+    ]
 
 def get_talent_insights(request):
     """Top skills by endorsement count — radar chart."""
