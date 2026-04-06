@@ -21,7 +21,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     otp = models.CharField(max_length=6, null=True, blank=True)
     otp_expiry = models.DateTimeField(null=True, blank=True)
 
-    role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='job_seeker', db_index=True)
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES, db_index=True)
 
     # 📱 CONTACT
     phone = PhoneNumberField(region='NP', null=True, blank=True)
