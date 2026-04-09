@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets, permissions
-from .models import Stori, StoriLike, StoriView, StoriComment, StoriMedia
-from .serializers import StoriSerializer, StoriLikeSerializer, StoriViewSerializer, StoriCommentSerializer, StoriMediaSerializer
+from .models import Stori, StoriLike, StoriView, StoriComment
+from .serializers import StoriSerializer, StoriLikeSerializer, StoriViewSerializer, StoriCommentSerializer
 # Create your views here.
 
 class StoriViewSet(viewsets.ModelViewSet):
@@ -57,17 +57,4 @@ class StoriCommentViewSet(viewsets.ModelViewSet):
     def perform_destroy(self, instance):
         instance.delete()
 
-class StoriMediaViewSet(viewsets.ModelViewSet):
-    queryset = StoriMedia.objects.all()
-    serializer_class = StoriMediaSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
-    
-    def get_queryset(self):
-        user = self.request.user
-        return StoriMedia.objects.filter(author=user)
-    def perform_destroy(self, instance):
-        instance.delete()
 
