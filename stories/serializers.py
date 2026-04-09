@@ -1,4 +1,4 @@
-from .models import Stori, StoriLike, StoriView, StoriComment
+from .models import Stori, StoriLike, StoriView, StoriComment, StoriMedia
 from rest_framework import serializers
 
 class StoriSerializer(serializers.ModelSerializer):
@@ -42,4 +42,10 @@ class StoriCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = StoriComment
         fields = ['id', 'story', 'author', 'content', 'parent', 'created_at']
+        read_only_fields = ['id', 'story', 'author', 'created_at']
+
+class StoriMediaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StoriMedia
+        fields = ['id', 'story', 'author', 'image', 'created_at']
         read_only_fields = ['id', 'story', 'author', 'created_at']

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Stori, StoriLike, StoriView, StoriComment, StoriTag
+from .models import Stori, StoriLike, StoriView, StoriComment, StoriMedia
 # Register your models here.
 
 @admin.register(Stori)
@@ -22,4 +22,9 @@ class StoriViewAdmin(admin.ModelAdmin):
 class StoriCommentAdmin(admin.ModelAdmin):
     list_display = ('id', 'story', 'author', 'content', 'created_at')
     search_fields = ('author__email', 'content')
+
+@admin.register(StoriMedia)
+class StoriMediaAdmin(admin.ModelAdmin):
+    list_display = ('id', 'story', 'author', 'created_at')
+    search_fields = ('author__email',)
     
