@@ -14,3 +14,14 @@ from django.core.asgi import get_asgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'jobrynbackend.settings')
 
 application = get_asgi_application()
+
+
+
+import django
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "jobrynbackend.settings")
+django.setup()
+
+from django_drf_mcp.asgi import get_asgi_application
+
+application = get_asgi_application()

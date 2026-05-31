@@ -21,6 +21,7 @@
                 {# Hiring Chart #}
                 {% component "unfold/components/card.html" with title=_("Hiring Pipeline (Last 6 Months)") %}
                     {% include "unfold/components/chart/line.html" with data=hiring_chart|safe height=300 %}
+                   
                 {% endcomponent %}
 
                 {# Revenue Chart #}

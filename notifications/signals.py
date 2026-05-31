@@ -33,7 +33,7 @@ def welcome_notification(sender, instance, created, **kwargs):
 
 
 # Example: from Connection model
-@receiver(post_save, sender='your_app.Connection')
+@receiver(post_save, sender='Connections.Connection')
 def connection_notification(sender, instance, created, **kwargs):
     if created:
         create_notification(
@@ -54,7 +54,7 @@ def connection_notification(sender, instance, created, **kwargs):
 
 
 # Example: from Message model
-@receiver(post_save, sender='your_app.Message')
+@receiver(post_save, sender='messages.Message')
 def message_notification(sender, instance, created, **kwargs):
     if created:
         create_notification(

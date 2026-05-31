@@ -36,16 +36,14 @@ urlpatterns = [
     path('api/v1/posts/', include('posts.urls')),
     path('api/v1/stories/', include('stories.urls')),
     path('api/v1/follows/', include('follows.urls')),
-<<<<<<< HEAD
     path('api/v1/connections/', include('connections.urls')),
     path('api/v1/messages/', include('messages.urls')),
     path('api/v1/notifications/', include('notifications.urls')),
     path('api/v1/newsletters/', include('newsletters.urls')),
     path ('api/v1/recommendeds/', include('recommendeds.urls')),
-=======
->>>>>>> d2688032b7045535ede7dcb6398ef44be4a72fd1
-    
-    
+    path('api/v1/assessments/', include('assessments.urls')),
+    path("", include("django_drf_mcp.urls")),
+
     # Swagger
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),

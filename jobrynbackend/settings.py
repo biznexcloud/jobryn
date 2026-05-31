@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     # Third Party
     'rest_framework',
     'rest_framework_simplejwt',
+     "django_drf_mcp",
     'drf_spectacular',
     'django_filters',
     'channels',
@@ -87,13 +88,14 @@ INSTALLED_APPS = [
     'meetings',
     'stories',
     'recommendeds',
+    'assessments',
     
 ]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # 👈 add this
+    'whitenoise.middleware.WhiteNoiseMiddleware',  
 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -126,26 +128,26 @@ ASGI_APPLICATION = 'jobrynbackend.asgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jobryn',
-        'USER': 'biznexcloud.com@gmail.com',
-        'PASSWORD': 'Ramesh@5611',
-        'HOST': '204.10.163.10',
-        'PORT': '3308',  # ✅ fixed (match your URL)
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'jobryn',
+#         'USER': 'biznexcloud.com@gmail.com',
+#         'PASSWORD': 'Ramesh@5611',
+#         'HOST': '204.10.163.10',
+#         'PORT': '3308',  # ✅ fixed (match your URL)
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#         }
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -341,6 +343,7 @@ UNFOLD = {
                     {"title": "Job Postings", "link": reverse_lazy("admin:jobs_job_changelist"), "icon": "work"},
                     {"title": "Applications", "link": reverse_lazy("admin:applications_application_changelist"), "icon": "person_search"},
                     {"title": "Meetings", "link": reverse_lazy("admin:meetings_meeting_changelist"), "icon": "event"},
+                    {"title": "Recommended Matches", "link": reverse_lazy("admin:recommendeds_recommended_changelist"), "icon": "thumb_up"}
                 ],
             },
             {
@@ -371,6 +374,7 @@ UNFOLD = {
                 "items": [
                     {"title": "Courses", "link": reverse_lazy("admin:learning_course_changelist"), "icon": "menu_book"},
                     {"title": "Enrollments", "link": reverse_lazy("admin:learning_enrollment_changelist"), "icon": "local_library"},
+                    {"title": "Assessments", "link": reverse_lazy("admin:assessments_assessment_changelist"), "icon": "quiz"},
                 ],
             },
             {

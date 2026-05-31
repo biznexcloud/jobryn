@@ -33,3 +33,19 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
             return True
         owner = getattr(obj, 'user', None) or getattr(obj, 'author', None) or getattr(obj, 'seeker', None) or getattr(obj, 'recruiter', None)
         return owner == request.user
+    
+    
+class IsConnectionParty(permissions.BasePermission):
+    """
+    Ensures that only the explicit sender or receiver can interact with the instance.
+    """
+    def has_object_permission(self, request, view, obj):
+        return request.user == obj.sender or request.user == obj.receiver
+
+
+class IsConnectionReceiver(permissions.BasePermission):
+    """
+    Ensures that only the targeted receiver can run certain write workflows (like accepting).
+    """
+    def has_object_permission(self, request, view, obj):
+        return request.user == obj.receivers
