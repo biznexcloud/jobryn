@@ -128,27 +128,36 @@ ASGI_APPLICATION = 'jobrynbackend.asgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
+#         'ENGINE': 'django.db.backends.postgresqp',
 #         'NAME': 'jobryn',
 #         'USER': 'biznexcloud.com@gmail.com',
-#         'PASSWORD': 'Ramesh@5611',
+#         'PASSWORD': 'jobryn',
 #         'HOST': '204.10.163.10',
-#         'PORT': '3308',  # ✅ fixed (match your URL)
+#         'PORT': '5432',  # ✅ fixed (match your URL)
 #         'OPTIONS': {
 #             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
 #         }
 #     }
 # }
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'jobryn',
+        'USER': 'jobryn',
+        'PASSWORD': 'jobryn',
+        'HOST': '109.199.124.68',
+        'PORT': '5433',
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
