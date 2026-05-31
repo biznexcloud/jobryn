@@ -14,7 +14,7 @@ services:
       - .env
 
     ports:
-      - "8000:8000"   # FIXED
+      - "8000"   # FIXED
 
     restart: always
 
