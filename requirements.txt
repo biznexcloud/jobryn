@@ -16,3 +16,4 @@ PyMySQL
 drf-spectacular
 whitenoise
 django_drf_mcp
+psycopg2
