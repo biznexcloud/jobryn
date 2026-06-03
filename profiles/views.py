@@ -2,6 +2,7 @@ from rest_framework import viewsets, permissions
 from .models import Profile
 from .serializers import JobSeeker_ProfileSerializer, Recruiter_ProfileSerializer
 from jobrynbackend.permissions import IsJobSeeker, IsRecruiter
+from connections.models import Connection
 
 # class JobSeeker_ProfileViewSet(viewsets.ModelViewSet):
 #     """
