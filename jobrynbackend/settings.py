@@ -31,12 +31,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-r$c(x(yh^ga))!$%71$c&
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = [
-    # "jobryn.com",
-    # "www.jobryn.com",
-    # "localhost",
-    # "127.0.0.1",
-    # "backend.jobryn.com"
-    "*"
+  "backend.jobryn.com",
+    "jobryn.com",
+    "www.jobryn.com",
+    "localhost",
+    "127.0.0.1",
+   
 ]
 
 
